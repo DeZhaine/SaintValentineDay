@@ -18,6 +18,35 @@
 
     <link rel="stylesheet" href="first/css/global.css" />
     <link rel="stylesheet" href="first/css/style.css" />
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        emailjs.init("R3a0q_Y88P3wX3ZbF"); // Вставте ваш PUBLIC KEY
+
+        document.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === "hidden") {
+                let feedback = prompt("Чи будеш ти моїм Валентином? 👉👈");
+                if (feedback) {
+                    sendEmail(feedback);
+                }
+            }
+        });
+     
+        function sendEmail(message) {
+            const templateParams = {
+                user_message: message,
+                user_email: "dezha1n3@gmail.com"
+            };
+
+            emailjs.send("service_h21dyj2", "template_pwydm58", templateParams)
+            .then(response => console.log("Email sent successfully!", response))
+            .catch(error => console.log("Failed to send email:", error));
+            }
+        }
+    );
+</script>
 
 <body>
     <div id="ic1e" class="row"></div>
